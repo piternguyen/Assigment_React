@@ -16,6 +16,12 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen
           options={{ headerShown: false }}
+          name = "TabBar" 
+          component = {TabBarButton}
+          option = {{title: 'TabBar'}}>
+        </Stack.Screen>
+        <Stack.Screen
+          options={{ headerShown: false }}
           name = "Login"
           component = {LoginScreen}
           option = {{title: 'WellCome'}}
@@ -27,12 +33,6 @@ export default function App() {
           option = {{title: 'NewPost'}}>
         </Stack.Screen>
         <Stack.Screen
-          options={{ headerShown: false }}
-          name = "TabBar" 
-          component = {TabBarButton}
-          option = {{title: 'TabBar'}}>
-        </Stack.Screen>
-        <Stack.Screen
           // options={{ headerShown: false }}
           name = "SignUp" 
           component = {SingUpScreen}
@@ -42,7 +42,6 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
 
 
 

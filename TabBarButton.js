@@ -6,23 +6,21 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useState } from "react";
-import HomeScreen from './HomeScreen';
-import VideoScreen from './VideosScreen';
-import NotificationScreen from './NotificationScreen';
-import MessageScreen from './MessageScreen';
-import UserScreen from './UserScreen';
-import NewPostScreen from './NewPostScreen';
-
+import HomeScreen from "./HomeScreen";
+import VideoScreen from "./VideosScreen";
+import NotificationScreen from "./NotificationScreen";
+import MessageScreen from "./MessageScreen";
+import UserScreen from "./UserScreen";
+import NewPostScreen from "./NewPostScreen";
 
 const Tab = createBottomTabNavigator();
 
-const TabBarButton = () => {
+const TabBarButton = ({ navigation }) => {
   return (
     <NavigationContainer independent={true}>
       <Tab.Navigator>
         <Tab.Screen
           name="TrangChu"
-          component={HomeScreen}
           options={{
             headerShown: false,
             tabBarLabel: "Trang Chủ",
@@ -31,7 +29,9 @@ const TabBarButton = () => {
               <Ionicons name="home" color={color} size={size} />
             ),
           }}
-        />
+        >
+          {(props) => <HomeScreen {...props} navigation={navigation} />}
+        </Tab.Screen>
         <Tab.Screen
           name="Videos"
           component={VideoScreen}
@@ -70,7 +70,6 @@ const TabBarButton = () => {
         />
         <Tab.Screen
           name="User"
-          component={UserScreen}
           options={{
             headerShown: true,
             tabBarLabel: "User",
@@ -79,13 +78,12 @@ const TabBarButton = () => {
               <Ionicons name="people" color={color} size={size} />
             ),
           }}
-        />
+        >
+          {(props) => <UserScreen {...props} navigation={navigation}/>}
+          </Tab.Screen>
       </Tab.Navigator>
-      
     </NavigationContainer>
-
   );
 };
-
 
 export default TabBarButton;

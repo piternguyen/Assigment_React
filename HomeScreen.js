@@ -8,9 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 
-const HomeScreen = ({navigation, onSearch}) => {
+const HomeScreen = ({navigation}) => {
 
-    const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   return (
     <ScrollView style = {{flex: 1}}>
@@ -24,7 +24,7 @@ const HomeScreen = ({navigation, onSearch}) => {
                         style = {{padding: 10, fontSize: 13}}/>
                     <TouchableOpacity onPress={() => {
                             if(searchText){
-                            onSearch(searchText)
+                            // onSearch(searchText)
                             }
                         }}>
                         <Ionicons name = "search" size={14} color='black' style = {{padding: 10}}/>
@@ -45,116 +45,7 @@ const HomeScreen = ({navigation, onSearch}) => {
             </View>
         
         </View>
-        <View style = {{borderTopWidth: 1, marginTop: 5}}>
-        <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-      <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
-        <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
-      </View>
-        </View>
+        
     </ScrollView>
   )
 }
