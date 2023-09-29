@@ -7,7 +7,7 @@ const MessageScreen = ({navigation, route}) => {
     <ScrollView style = {{flex: 1, marginTop: 30}}> 
       <View style = {{paddingLeft: 10, paddingTop: 10, flexDirection: 'row', alignItems: 'center'}}>
         <Image source={require('./assets/image/avatar.jpg')} style = {{width: 60, height: 60}}/>
-        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>Học làm đóe gì</Text>
+        <Text style = {{fontSize: 16, fontWeight: 'bold', paddingLeft: 20}}>React_Native</Text>
       </View>
     </ScrollView>
   )
