@@ -2,10 +2,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LoginScreen from "./LoginScreen";
-import HomeScreen from './HomeScreen';
 import NewPostScreen from './NewPostScreen';
 import TabBarButton from './TabBarButton';
 import SingUpScreen from './SignUpScreen';
+import RegistrationInformation from './RegistrationInformation';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -14,12 +14,6 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name = "TabBar" 
-          component = {TabBarButton}
-          option = {{title: 'TabBar'}}>
-        </Stack.Screen>
         <Stack.Screen
           options={{ headerShown: false }}
           name = "Login"
@@ -33,10 +27,22 @@ export default function App() {
           option = {{title: 'NewPost'}}>
         </Stack.Screen>
         <Stack.Screen
+          options={{ headerShown: false }}
+          name = "Quay lại" 
+          component = {TabBarButton}
+          option = {{title: 'TabBar'}}>
+        </Stack.Screen>
+        <Stack.Screen
           // options={{ headerShown: false }}
           name = "SignUp" 
           component = {SingUpScreen}
           option = {{title: 'SignUp'}}>
+        </Stack.Screen>
+        <Stack.Screen
+          // options={{ headerShown: false }}
+          name = "RegistrationInformation" 
+          component = {RegistrationInformation}
+          option = {{title: 'RegistrationInformation'}}>
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

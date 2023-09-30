@@ -28,11 +28,11 @@ const LoginScreen = ({navigation}) => {
                 secureTextEntry={true}   
             ></TextInput>
             <View style = {{width: 300}}>
-            <Button title="Sign In" onPress={() => {navigation.navigate('TabBar')}}></Button>
+            <Button title="Sign In" onPress={() => {navigation.navigate('Quay lại')}}></Button>
             </View>
             <View style = {{margin: 20, flexDirection: "row"}}>
                 <Text>Don't have an account? </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('RegistrationInformation')}>
                     <Text style = {{color: "blue"}}> Sign Up</Text>
                 </TouchableOpacity>
             </View>

@@ -37,8 +37,13 @@ const LoginScreen = ({navigation}) => {
                 onChangeText={(text) => setconfirmPass(text)}
                 secureTextEntry={true}   
             ></TextInput>
-            <View style = {{width: 300}}>
-            <Button title="Sign Up" onPress={() => {navigation.navigate('TabBar')}}></Button>
+            <View style = {{flexDirection: "row"}}>
+                <View style = {{width: 145}}>
+                    <Button title="Quay lại" onPress={() => {navigation.navigate('RegistrationInformation')}}></Button>
+                </View>
+                <View style = {{width: 145, marginLeft: 10}}>
+                    <Button title="SignUp" onPress={() => navigation.navigate('Login')} style = {{marginLeft: 10}}></Button>
+                </View>
             </View>
             
             </ImageBackground>
