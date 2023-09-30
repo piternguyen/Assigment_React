@@ -76,14 +76,6 @@ const RegistrationInformation = ({navigation}) => {
           />
         )}
 
-            {/* <TextInput
-                value={gioiTinh}
-                placeholder="Giới tính"
-                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 70, paddingHorizontal: 10}}
-                onChangeText={(text) => setGioiTinh(text)}
-                secureTextEntry={true}   
-            ></TextInput> */}
-
 
 <TouchableOpacity
   onPress={openGenderModal}
