@@ -25,7 +25,7 @@ const MenuScreen = ({navigation}) => {
         <View style = {{flexDirection: 'row', alignItems: 'center', justifyContent:'space-between', padding: 20, borderBottomWidth: 1, borderTopWidth: 1, marginTop: 5}}>
                 <View style = {{ flexDirection: 'row', alignItems: 'center'}}>
                     <View style = {{width: 40, height: 40, borderColor: 'black', borderWidth: 1, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white'}}>
-                        <Ionicons name = "people" size={20} color= 'black'/>
+                        <Ionicons name = "people" size={20} color= 'black' />
                     </View>       
                     <TouchableOpacity onPress={() => navigation.navigate('NewPost')} style={{ marginLeft: 10 }}>
                         <Text>Bạn đang nghĩ gì?</Text>

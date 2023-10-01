@@ -70,8 +70,9 @@ const TabBarButton = ({ navigation }) => {
         />
         <Tab.Screen
           name="User"
+          // component={UserScreen}
           options={{
-            headerShown: true,
+            headerShown: false,
             tabBarLabel: "User",
             title: "User",
             tabBarIcon: ({ color, size }) => (
