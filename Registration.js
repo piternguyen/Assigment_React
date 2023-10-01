@@ -1,8 +1,8 @@
 import { Alert, Button, ImageBackground, Keyboard, Text, TouchableOpacity, TouchableWithoutFeedback, View, DatePickerIOS, Modal} from "react-native"
 import { TextInput } from "react-native-gesture-handler"
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import DatePicker from 'react-native-datepicker';
+// import DatePicker from 'react-native-datepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const RegistrationInformation = ({navigation}) => {
@@ -14,6 +14,7 @@ const RegistrationInformation = ({navigation}) => {
     const [gioiTinh, setGioiTinh] = useState('');
     const [showGenderModal, setShowGenderModal] = useState(false);
     const [selectedGender, setSelectedGender] = useState('');
+
 
     const openGenderModal = () => {
         setShowGenderModal(true);
@@ -83,18 +84,18 @@ const RegistrationInformation = ({navigation}) => {
             }}
             >
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-              <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, width: 250 }}>
+              <View style={{ backgroundColor: "white", padding: 20, borderRadius: 10, width: 250, justifyContent: "center", alignItems: "center" }}>
                 <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 10 }}>Chọn giới tính</Text>
-                <TouchableOpacity onPress={() => setSelectedGender("Nam")}>
-                  <Text>Nam</Text>
+                <TouchableOpacity onPress={() => setSelectedGender("Nam")} style = {{borderTopWidth: 1, borderBottomWidth: 1, width: "100%"}}>
+                  <Text style = {{padding: 5, fontWeight: "bold", color: 'red', fontSize: 16}}>Nam</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setSelectedGender("Nữ")}>
-                  <Text>Nữ</Text>
+                <TouchableOpacity onPress={() => setSelectedGender("Nữ")} style = {{borderBottomWidth: 1, width: "100%"}}>
+                  <Text style = {{padding: 5, fontWeight: "bold", color: 'red', fontSize: 16}}>Nữ</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => setSelectedGender("Khác")}>
-                  <Text>Khác</Text>
+                <TouchableOpacity onPress={() => setSelectedGender("Khác")} style = {{borderBottomWidth: 1, width: "100%"}}>
+                  <Text style = {{padding: 5, fontWeight: "bold", color: 'red', fontSize: 16}}>Khác</Text>
                 </TouchableOpacity>
-                <Button title="Đóng" onPress={() => setShowGenderModal(false)} />
+                <Button title="Đóng" onPress={() => setShowGenderModal(false)} style = {{marginTop: 10}}/>
                 </View>
             </View>
             </Modal>

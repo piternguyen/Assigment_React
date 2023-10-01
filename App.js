@@ -45,7 +45,7 @@ export default function App() {
           component = {RegistrationInformation}
           option = {{title: 'RegistrationInformation'}}>
         </Stack.Screen>
-        {/* <Stack.Screen name="User" component={UserScreen} /> */}
+        <Stack.Screen name="User" component={UserScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
