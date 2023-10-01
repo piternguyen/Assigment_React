@@ -4,11 +4,6 @@ import React from "react";
 import { useState } from "react";
 import DatePicker from 'react-native-datepicker';
 import DateTimePicker from '@react-native-community/datetimepicker';
-// import { AppRegistry } from 'react-native';
-// import App from './App';
-
-
-// AppRegistry.registerComponent('MyApp', () => App);
 
 const RegistrationInformation = ({navigation}) => {
     const [ten, setTen] = useState('');
@@ -63,7 +58,7 @@ const RegistrationInformation = ({navigation}) => {
                 onChangeText={(text) => setHo(text)}
                 secureTextEntry={true}   
             ></TextInput>
-            {/* <TouchableOpacity
+            <TouchableOpacity
               onPress={() => setShowDatePicker(true)}
               style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, justifyContent: 'center' }}
             >
@@ -102,7 +97,7 @@ const RegistrationInformation = ({navigation}) => {
                 <Button title="Đóng" onPress={() => setShowGenderModal(false)} />
                 </View>
             </View>
-            </Modal> */}
+            </Modal>
 
 
             <View style = {{flexDirection: "row"}}>
