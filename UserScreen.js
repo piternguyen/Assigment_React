@@ -32,7 +32,7 @@ const MenuScreen = ({ navigation }) => {
                 style={{ marginTop: 20, marginEnd: 15, color: 'white'}}
               />
             </TouchableOpacity>
-            <Modal
+            {/* <Modal
               visible={showModel}
               animationType="slide"
               transparent={true} // Để có nền trong suốt
@@ -68,7 +68,7 @@ const MenuScreen = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-            </Modal>
+            </Modal> */}
           </View>
         </View>
         <View>
