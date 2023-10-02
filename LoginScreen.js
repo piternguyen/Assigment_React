@@ -27,7 +27,7 @@ const LoginScreen = ({navigation}) => {
                 onChangeText={(text) => setPass(text)}
                 secureTextEntry={true}   
             ></TextInput>
-            <View style = {{width: 300}}>
+            <View style = {{width: 300, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
             <Button title="Sign In" onPress={() => {navigation.navigate('Quay lại')}}></Button>
             </View>
             <View style = {{margin: 20, flexDirection: "row"}}>

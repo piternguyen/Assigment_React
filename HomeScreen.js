@@ -37,7 +37,7 @@ const HomeScreen = ({navigation, onSearch}) => {
                     <View style = {{width: 40, height: 40, borderColor: 'black', borderWidth: 1, borderRadius: 20, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white'}}>
                         <Ionicons name = "people" size={20} color= 'black' onPress={() => navigation.navigate('User')}/>
                     </View>       
-                    <TouchableOpacity onPress={() => navigation.navigate('NewPost')} style={{ marginLeft: 10, backgroundColor: 'white', width: 250, height: 25, justifyContent: 'center'}}>
+                    <TouchableOpacity onPress={() => navigation.navigate('NewPost')} style={{ marginLeft: 10, backgroundColor: 'white', width: 250, height: 25, justifyContent: 'center', borderRadius: 8}}>
                         <Text style = {{padding: 5}}>Bạn đang nghĩ gì?</Text>
                     </TouchableOpacity>      
                 </View>

@@ -18,14 +18,14 @@ const LoginScreen = ({navigation}) => {
             <TextInput
                 value={mail}
                 placeholder="Nhập Email"
-                style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10}}
+                style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setMail(text)}
             ></TextInput>
 
             <TextInput
                 value={pass}
                 placeholder="Nhập Pass"
-                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10}}
+                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setPass(text)}
                 secureTextEntry={true}   
             ></TextInput>
@@ -33,15 +33,15 @@ const LoginScreen = ({navigation}) => {
             <TextInput
                 value={confirmPass}
                 placeholder="Confirm Pass"
-                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 70, paddingHorizontal: 10}}
+                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 70, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setconfirmPass(text)}
                 secureTextEntry={true}   
             ></TextInput>
             <View style = {{flexDirection: "row"}}>
-                <View style = {{width: 145}}>
+                <View style = {{width: 145, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
                     <Button title="Quay lại" onPress={() => {navigation.navigate('RegistrationInformation')}}></Button>
                 </View>
-                <View style = {{width: 145, marginLeft: 10}}>
+                <View style = {{width: 145, marginLeft: 10, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
                     <Button title="SignUp" onPress={() => navigation.navigate('Login')} style = {{marginLeft: 10}}></Button>
                 </View>
             </View>

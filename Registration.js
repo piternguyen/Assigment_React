@@ -40,14 +40,14 @@ const RegistrationInformation = ({navigation}) => {
             <TextInput
                 value={ten}
                 placeholder="Nhập tên"
-                style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10}}
+                style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setTen(text)}
             ></TextInput>
 
             <TextInput
                 value={tenDem}
                 placeholder="Nhập tên đệm"
-                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10}}
+                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setTenDem(text)}
                 secureTextEntry={true}   
             ></TextInput>
@@ -55,13 +55,13 @@ const RegistrationInformation = ({navigation}) => {
             <TextInput
                 value={ho}
                 placeholder="Nhập họ"
-                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10}}
+                style={{borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
                 onChangeText={(text) => setHo(text)}
                 secureTextEntry={true}   
             ></TextInput>
             <TouchableOpacity
               onPress={() => setShowDatePicker(true)}
-              style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, justifyContent: 'center' }}
+              style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, justifyContent: 'center', backgroundColor: 'white', borderRadius: 8 }}
             >
               <Text>{ngaySinh.toDateString()}</Text>
             </TouchableOpacity>
@@ -73,7 +73,7 @@ const RegistrationInformation = ({navigation}) => {
 
             <TouchableOpacity
               onPress={openGenderModal}
-              style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, justifyContent: 'center' }}
+              style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, justifyContent: 'center' , backgroundColor: 'white', borderRadius: 8}}
             >
               <Text>{selectedGender || "Chọn giới tính"}</Text>
             </TouchableOpacity>
@@ -102,10 +102,10 @@ const RegistrationInformation = ({navigation}) => {
 
 
             <View style = {{flexDirection: "row"}}>
-                <View style = {{width: 145}}>
+                <View style = {{width: 145, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
                     <Button title="Tiếp tục" onPress={() => {navigation.navigate('SignUp')}}></Button>
                 </View>
-                <View style = {{width: 145, marginLeft: 10}}>
+                <View style = {{width: 145, marginLeft: 10, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
                     <Button title="Hủy" onPress={() => navigation.navigate('Login')} style = {{marginLeft: 10}}></Button>
                 </View>
             </View>
