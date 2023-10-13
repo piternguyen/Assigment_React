@@ -8,6 +8,7 @@ import SingUpScreen from './SignUpScreen';
 import RegistrationInformation from './Registration';
 import UserScreen from './UserScreen';
 import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -45,7 +46,8 @@ export default function App() {
           component = {RegistrationInformation}
           option = {{title: 'RegistrationInformation'}}>
         </Stack.Screen>
-        <Stack.Screen name="User" component={UserScreen} />
+        <Stack.Screen name="User" component={UserScreen}  options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

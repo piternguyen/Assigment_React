@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import React, { useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const LoginScreen = ({ navigation }) => {
   const [mail, setMail] = useState("");
@@ -17,29 +18,47 @@ const LoginScreen = ({ navigation }) => {
 
   const handleSignIn = async () => {
     try {
-      const response = await fetch(`https://652670e0917d673fd76c448b.mockapi.io/api/users?email=${mail}`);
+      const response = await fetch(
+        `https://652670e0917d673fd76c448b.mockapi.io/api/users?email=${mail}`
+      );
       if (response.status === 200) {
         const userData = await response.json();
         if (userData.length === 1 && userData[0].password === pass) {
+          const userName = userData[0].name;
+          const idUser = userData[0].idUser;
+          const userRole = userData[0].role;
+          const userImage = userData[0].avatar;
+          if (idUser) {
+            await AsyncStorage.setItem("idUser", idUser);
+          }
+          if (userName) {
+            await AsyncStorage.setItem("userName", userName);
+          }
+          if (userRole) {
+            await AsyncStorage.setItem("userRole", userRole);
+          }
+          if (userImage) {
+            await AsyncStorage.setItem("userAvatar", userImage);
+          }
           navigation.navigate("Quay lại");
         } else {
-            Alert.alert(
-                "Lỗi",
-                "Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!")
+          Alert.alert(
+            "Lỗi",
+            "Email hoặc mật khẩu không chính xác. Vui lòng kiểm tra lại!"
+          );
         }
       } else {
         Alert.alert(
-            "Lỗi",
-            "Không tìm thấy tài khoản với email đã nhập. Vui lòng kiểm tra lại!"
-          );
+          "Lỗi",
+          "Không tìm thấy tài khoản với email đã nhập. Vui lòng kiểm tra lại!"
+        );
       }
     } catch (error) {
       console.error(error);
       Alert.alert("Lỗi", "Đã có lỗi xảy ra. Vui lòng thử lại sau!");
     }
   };
-  
-  
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <ImageBackground

@@ -9,47 +9,42 @@ const SingUpScreen = ({navigation}) => {
 
     const handleSignUp = () => {
         // Kiểm tra xem email đã tồn tại hay chưa
-        fetch('https://652670e0917d673fd76c448b.mockapi.io/api/users?email=' + mail)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.length > 0) {
-                    // Nếu email đã tồn tại, hiển thị thông báo
-                    Alert.alert('Thông báo', 'Email đã tồn tại. Vui lòng sử dụng email khác.');
-                } else {
-                    // Kiểm tra mật khẩu và confirmPassword
-                    if (pass !== confirmPass) {
-                        Alert.alert('Lỗi', 'Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.');
-                    } else {
-                        // Nếu tất cả điều kiện đều đúng, tiến hành tạo tài khoản
-                        fetch('https://652670e0917d673fd76c448b.mockapi.io/api/users', {
-                            method: 'POST',
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                name: ten,
-                                email: mail,
-                                password: pass,
-                                confirmPass: confirmPass
-                            })
-                        })
-                            .then((response) => response.json())
-                            .then((responseJson) => {
-                                console.log(responseJson);
-                                navigation.navigate('Quay lại');
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                                Alert.alert('Đăng ký không thành công', 'Vui lòng thử lại sau!');
-                            });
-                    }
-                }
-            })
-            .catch((error) => {
-                console.error(error);
-                Alert.alert('Lỗi', 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
-            });
+        fetch(`https://652670e0917d673fd76c448b.mockapi.io/api/users?email=${mail}`)
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.length === 0) {
+      // Nếu không có bản ghi nào với email này, tạo tài khoản mới
+      fetch('https://652670e0917d673fd76c448b.mockapi.io/api/users', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: ten,
+          email: mail,
+          password: pass,
+          confirmPass: confirmPass,
+        }),
+      })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log(responseJson);
+          navigation.navigate('Quay lại');
+        })
+        .catch((error) => {
+          console.error(error);
+          Alert.alert('Đăng ký không thành công', 'Vui lòng thử lại sau!');
+        });
+    } else {
+      Alert.alert('Thông báo', 'Email đã tồn tại. Vui lòng sử dụng email khác.');
+    }
+  })
+  .catch((error) => {
+    console.error(error);
+    Alert.alert('Lỗi', 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
+  });
+
     };
     
     const [ten, setTen] = useState('');

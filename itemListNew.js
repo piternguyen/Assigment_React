@@ -1,86 +1,68 @@
-import React, { Component, useState } from 'react';
-import { View, Text, Dimensions, Image, StyleSheet, ScrollView, TouchableOpacity, FlatList, TouchableWithoutFeedback, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, FlatList, TextInput } from 'react-native';
 import Item_listviewComment from './itemComment';
 
 function Item_listViewNews(props) {
     const [like, setLike] = useState(true);
     const [comment, setComment] = useState(false);
     const { dataLN } = props;
-    function clickLike() {
-        if (like == true) {
-            setLike(false)
-        }
-        else {
-            setLike(true)
-        }
 
+    const clickLike = () => {
+        setLike(!like);
     }
-    function clickComment() {
-        if (comment == false) {
-            setComment(true)
-        }
-        else {
-            setComment(false)
-        }
 
-
+    const clickComment = () => {
+        setComment(!comment);
     }
+
     const imgSource = like ? require('./assets/image/heart_unlike.png') : require('./assets/image/heart_like.png');
 
     return (
-
         <View style={styles.container}>
-          <View style={styles.Viewname}>
-                <Image style={styles.imgavtar} source={require('./assets/image/avatar.jpg')}
-                />
+            <View style={styles.Viewname}>
+                <Image style={styles.imgavtar} source={{ uri: dataLN.avatar }} />
                 <Text style={styles.textname}>{dataLN.name}</Text>
             </View>
             <View>
-                <Text style={styles.texttitle}>{dataLN.title}</Text>
+                <Text style={styles.texttitle}>{dataLN.content}</Text>
             </View>
             <View style={{ alignItems: 'center' }}>
-                <Image style={styles.imgcontent} source={{ uri: dataLN.image }}
-                />
+                <Image style={styles.imgcontent} source={{ uri: dataLN.image }} />
             </View>
             <View style={{ flexDirection: 'row', marginLeft: 10 }}>
-                <TouchableOpacity onPress={() => clickLike()}>
-                    <Image
-                        style={styles.imgicon}
-                        source={imgSource}
-
-                    />
+                <TouchableOpacity onPress={clickLike}>
+                    <Image style={styles.imgicon} source={imgSource} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => clickComment()}>
+                <TouchableOpacity onPress={clickComment}>
                     <Image style={styles.imgicon} source={require('./assets/image/comment.png')} />
-                </TouchableOpacity >
+                </TouchableOpacity>
                 <TouchableOpacity>
                     <Image style={styles.imgicon} source={require('./assets/image/share.png')} />
                 </TouchableOpacity>
             </View>
-            
 
-            {comment &&<View style={{ flex: 1, alignItems: 'center' }}>
-                <View style={styles.comment}>
-                    <FlatList nestedScrollEnabled
-                        contentContainerStyle={{
-                            flexGrow: 1,
-                        }}
-                        data={dataItem_LVComment}
-                        renderItem={({ item }) => <Item_listviewComment dataComment={item} />}
-                        keyExtractor={item => item._id}
-                    />
-                    <View style={styles.styleComment}>
-                        <TextInput placeholder='Bình luận' style={styles.TextComment}/>
-                    </View>
-
-                </View>
-            </View>}
-
-
+            {comment && 
+              <View style={{ flex: 1, alignItems: 'center' }}>
+                  <View style={styles.comment}>
+                      <FlatList
+                          nestedScrollEnabled
+                          contentContainerStyle={{
+                              flexGrow: 1,
+                          }}
+                          data={dataLN.comments}
+                          renderItem={({ item }) => <Item_listviewComment dataComment={item} />}
+                          keyExtractor={item => item._id}
+                      />
+                      <View style={styles.styleComment}>
+                          <TextInput placeholder='Bình luận' style={styles.TextComment} />
+                      </View>
+                  </View>
+              </View>
+            }
         </View>
-
     );
 }
+
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',
@@ -107,12 +89,10 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginLeft: 20,
         marginBottom: 10,
-
     },
     Viewname: {
         flexDirection: 'row',
         marginTop: 10
-
     },
     textname: {
         fontSize: 23,
@@ -128,7 +108,7 @@ const styles = StyleSheet.create({
         marginLeft: 20
     },
     comment: {
-        flexGrow: 1,
+        flex: 1,
         width: '90%',
         height: 250,
         backgroundColor: 'white',
@@ -136,76 +116,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'scroll',
         zIndex: 99999,
-       
     },
-    styleComment:{
-        width:"95%",
-        height:40,
-        paddingStart:10,
-        borderRadius:15,
-        borderWidth:2,
-        justifyContent:'center',
-        margin:10
-        
-
+    styleComment: {
+        width: "95%",
+        height: 40,
+        paddingStart: 10,
+        borderRadius: 15,
+        borderWidth: 2,
+        justifyContent: 'center',
+        margin: 10
     },
-    TextComment:{
-       fontSize:15,
+    TextComment: {
+        fontSize: 15,
     }
-
-})
-const dataItem_LVComment =
-    [
-        {
-            "_id": "1",
-            "name": "admin",
-            "title": "Hay quá bạn ơi",
-            "createdAt": "2023-01-12T06:26:17.539Z",
-            "createdBy": {
-                "_id": "63ac39aeedf7c80016c57a67",
-                "name": "",
-                "avatar": ""
-
-            }
-        },
-        {
-            "_id": "2",
-
-            "name": "admin",
-            "title": "Ok ok",
-            "createdAt": "2023-01-12T06:26:17.539Z",
-            "createdBy": {
-                "_id": "63ac39aeedf7c80016c57a67",
-                "name": "",
-                "avatar": ""
-            }
-        },
-        {
-            "_id": "3",
-
-            "name": "admin",
-            "title": "What's your name ?",
-            "createdAt": "2023-01-12T06:26:17.539Z",
-            "createdBy": {
-                "_id": "63ac39aeedf7c80016c57a67",
-                "name": "",
-                "avatar": ""
-            }
-        },
-        {
-            "_id": "4",
-
-            "name": "admin",
-            "title": "Shut up!",
-            "createdAt": "2023-01-12T06:26:17.539Z",
-            "createdBy": {
-                "_id": "63ac39aeedf7c80016c57a67",
-                "name": "",
-                "avatar": ""
-            }
-        },
-    ]
-
-
+});
 
 export default Item_listViewNews;
