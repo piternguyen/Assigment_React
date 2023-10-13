@@ -5,7 +5,54 @@ import { useState } from "react";
 
 
 
-const LoginScreen = ({navigation}) => {
+const SingUpScreen = ({navigation}) => {
+
+    const handleSignUp = () => {
+        // Kiểm tra xem email đã tồn tại hay chưa
+        fetch('https://652670e0917d673fd76c448b.mockapi.io/api/users?email=' + mail)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.length > 0) {
+                    // Nếu email đã tồn tại, hiển thị thông báo
+                    Alert.alert('Thông báo', 'Email đã tồn tại. Vui lòng sử dụng email khác.');
+                } else {
+                    // Kiểm tra mật khẩu và confirmPassword
+                    if (pass !== confirmPass) {
+                        Alert.alert('Lỗi', 'Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.');
+                    } else {
+                        // Nếu tất cả điều kiện đều đúng, tiến hành tạo tài khoản
+                        fetch('https://652670e0917d673fd76c448b.mockapi.io/api/users', {
+                            method: 'POST',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name: ten,
+                                email: mail,
+                                password: pass,
+                                confirmPass: confirmPass
+                            })
+                        })
+                            .then((response) => response.json())
+                            .then((responseJson) => {
+                                console.log(responseJson);
+                                navigation.navigate('Quay lại');
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                                Alert.alert('Đăng ký không thành công', 'Vui lòng thử lại sau!');
+                            });
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                Alert.alert('Lỗi', 'Đã có lỗi xảy ra. Vui lòng thử lại sau.');
+            });
+    };
+    
+    const [ten, setTen] = useState('');
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const [confirmPass, setconfirmPass] = useState('');
@@ -14,6 +61,13 @@ const LoginScreen = ({navigation}) => {
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <ImageBackground source={require('./assets/image/backgroud.jpg')} style = {{width: "100%", height: "100%", alignItems: "center", flex: 1, justifyContent: "center"}}>
             <Text style={{marginBottom: 50, fontSize: 35, fontWeight: "bold", color: 'blue'}}>ĐĂNG KÝ</Text>
+
+            <TextInput
+                value={ten}
+                placeholder="Nhập tên"
+                style={{ borderColor: "white", borderWidth: 1, height: 35, width: 300, marginBottom: 10, paddingHorizontal: 10, backgroundColor: 'white', borderRadius: 8}}
+                onChangeText={(text) => setTen(text)}
+            ></TextInput>
 
             <TextInput
                 value={mail}
@@ -39,10 +93,10 @@ const LoginScreen = ({navigation}) => {
             ></TextInput>
             <View style = {{flexDirection: "row"}}>
                 <View style = {{width: 145, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
-                    <Button title="Quay lại" onPress={() => {navigation.navigate('RegistrationInformation')}}></Button>
+                    <Button title="Quay lại" onPress={() => {navigation.navigate('Login')}}></Button>
                 </View>
                 <View style = {{width: 145, marginLeft: 10, borderColor: 'black', borderWidth: 1, borderRadius: 8, backgroundColor: 'white'}}>
-                    <Button title="SignUp" onPress={() => navigation.navigate('Login')} style = {{marginLeft: 10}}></Button>
+                    <Button title="SignUp" onPress={handleSignUp} style = {{marginLeft: 10}}></Button>
                 </View>
             </View>
             
@@ -53,4 +107,4 @@ const LoginScreen = ({navigation}) => {
 }
 
 
-export default LoginScreen
+export default SingUpScreen
