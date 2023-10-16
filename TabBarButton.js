@@ -12,6 +12,7 @@ import NotificationScreen from "./NotificationScreen";
 import MessageScreen from "./MessageScreen";
 import UserScreen from "./UserScreen";
 import NewPostScreen from "./NewPostScreen";
+import MenuScreen from "./MenuScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,18 +34,6 @@ const TabBarButton = ({ navigation }) => {
           {(props) => <HomeScreen {...props} navigation={navigation} />}
         </Tab.Screen>
         <Tab.Screen
-          name="Videos"
-          component={VideoScreen}
-          options={{
-            headerShown: false,
-            tabBarLabel: "Videos",
-            title: "Videos",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="videocam" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
           name="ThongBao"
           component={NotificationScreen}
           options={{
@@ -52,35 +41,23 @@ const TabBarButton = ({ navigation }) => {
             tabBarLabel: "Thông Báo",
             title: "Thông Báo",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="notifications-off" color={color} size={size} />
+              <Ionicons name="notifications" color={color} size={size} />
             ),
           }}
         />
         <Tab.Screen
-          name="TinNhan"
-          component={MessageScreen}
+          name="Menu"
+          // component={MenuScreen}
           options={{
             headerShown: false,
-            tabBarLabel: "Tin Nhắn",
-            title: "Tin Nhắn",
+            tabBarLabel: "Menu",
+            title: "Menu",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="send" color={color} size={size} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="User"
-          // component={UserScreen}
-          options={{
-            headerShown: false,
-            tabBarLabel: "User",
-            title: "User",
-            tabBarIcon: ({ color, size }) => (
-              <Ionicons name="people" color={color} size={size} />
+              <Ionicons name="menu" color={color} size={size} />
             ),
           }}
         >
-          {(props) => <UserScreen {...props} navigation={navigation}/>}
+          {(props) => <MenuScreen {...props} navigation={navigation}/>}
           </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>

@@ -46,8 +46,8 @@ export default function App() {
           component = {RegistrationInformation}
           option = {{title: 'RegistrationInformation'}}>
         </Stack.Screen>
-        <Stack.Screen name="User" component={UserScreen}  options={{ headerShown: false }} />
-        <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }} />
+        <Stack.Screen name="User" component={UserScreen} />
+        <Stack.Screen name="Trangchu" component={HomeScreen}  options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

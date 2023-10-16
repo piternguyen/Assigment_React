@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FlatList,
   View,
@@ -11,69 +11,58 @@ import {
   Modal,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// const [showPopup, setShowPopup] = useState(false);
-const banner = require("./assets/image/banner.jpg");
-const avatar = require("./assets/image/avatar.jpg");
+const UserScreen = ({ navigation }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
+  const [userAccess, setUserAccess] = useState(""); // Thêm state cho quyền của người dùng
 
-const MenuScreen = ({ navigation }) => {
-  const [showModel, setshowModel] = useState(false);
+  const getUserAccess = async () => {
+    try {
+      const access = await AsyncStorage.getItem("userAccess"); // Lấy quyền từ AsyncStorage
+      setUserAccess(access);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const name = await AsyncStorage.getItem("userName");
+        const avatar = await AsyncStorage.getItem("userAvatar");
+        if (name !== null) {
+          setUserName(name);
+        }
+        if (avatar !== null) {
+          setUserAvatar(avatar);
+        }
+      } catch (error) {
+        console.error("Error fetching data from AsyncStorage: ", error);
+      }
+    };
+    fetchData();
+    getUserAccess
+  }, []);
 
   return (
     <ScrollView style={{ flex: 1 }}>
       <View style={{ borderBottomWidth: 1 }}>
-        <View style = {{flexDirection: "row"}}>
-          <Image source={banner} style={{ width: "100%", height: 250 }} />
-          <View style = {{position: "absolute", marginLeft: '90%', marginTop: "6%"}}>
-            <TouchableOpacity onPress={() => setshowModel(true)} >
-              <Ionicons
-                name="menu"
-                size={35}
-                style={{ marginTop: 20, marginEnd: 15, color: 'white'}}
-              />
-            </TouchableOpacity>
-            {/* <Modal
-              visible={showModel}
-              animationType="slide"
-              transparent={true} // Để có nền trong suốt
-              onRequestClose={() => setshowModel(false)} // Để có thể đóng modal bằng cách bấm nút back trên Android
-            >
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "space-between",
-                  alignItems: "flex-end",
-                  marginEnd: 20,
-                  marginTop: 40,
-                }}
-              >
-                <View
-                  style={{
-                    width: 200,
-                    height: 200,
-                    backgroundColor: "white",
-                    borderRadius: 10,
-                    padding: 10
-                  }}
-                >
-                  <Text>Menu:</Text>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('Login')}
-                    style = {{borderTopWidth: 1}}
-                  >
-                    <Text style = {{padding: 5}}>Đăng xuất</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity   style = {{borderTopWidth: 1}}  onPress={() => setshowModel(false)}>
-                    <Text style = {{padding: 5}}>Đóng</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Modal> */}
-          </View>
+        <View style={{ flexDirection: "row" }}>
+          <Image
+            source={require("./assets/image/banner.jpg")}
+            style={{ width: "100%", height: 250 }}
+          />
         </View>
         <View>
           <Image
-            source={avatar}
+            source={
+              userAvatar
+                ? { uri: userAvatar }
+                : require("./assets/image/avatar.jpg")
+            }
             style={{
               width: 150,
               height: 150,
@@ -87,7 +76,7 @@ const MenuScreen = ({ navigation }) => {
             }}
           />
         </View>
-        <View style={{justifyContent: "space-between" }}>
+        <View style={{ justifyContent: "space-between" }}>
           <Text
             style={{
               fontSize: 20,
@@ -97,49 +86,34 @@ const MenuScreen = ({ navigation }) => {
               paddingBottom: 10,
             }}
           >
-            ADMIN
+            {userName}
           </Text>
-          
         </View>
       </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: 20,
-          borderBottomWidth: 1,
-          borderTopWidth: 1,
-          marginTop: 5,
-        }}
-      >
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
-          <View
-            style={{
-              width: 40,
-              height: 40,
-              borderColor: "black",
-              borderWidth: 1,
-              borderRadius: 20,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "white",
-            }}
-          >
-            <Ionicons name="people" size={20} color="black" />
+      {userAccess === "admin" && ( // Kiểm tra quyền của người dùng
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: 20,
+            borderBottomWidth: 1,
+            borderTopWidth: 1,
+            marginTop: 5,
+          }}
+        >
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("NewPost")}
+              style={styles.inputButton}
+            >
+              <Text style={styles.inputText}>Bạn đang nghĩ gì?</Text>
+            </TouchableOpacity>
           </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("NewPost")}
-            style={{ marginLeft: 10 }}
-          >
-            <Text>Bạn đang nghĩ gì?</Text>
-          </TouchableOpacity>
         </View>
-        <Ionicons name="images" size={20} style={{ paddingEnd: 20 }} />
-      </View>
+      )}
     </ScrollView>
   );
 };
 
-export default MenuScreen;
+export default UserScreen;
